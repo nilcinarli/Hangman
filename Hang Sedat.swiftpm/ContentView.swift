@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var wordToGuess = "CAT"
-    @State private var guessedWord = "___"
-    @State private var attemptsRemaining = 3
+    @State private var wordreal = "CAT"
+    @State private var space = "___"
+    @State private var live = 3
     @State private var gameover = false
     
     var body: some View {
@@ -11,37 +11,37 @@ struct ContentView: View {
             Text("Hang Sedat")
                 .font(.largeTitle)
             
-            Text("Word to Guess: \(guessedWord)")
+            Text("Word to Guess: \(space)")
                 .font(.title)
             
-            Text("Attempts Remaining: \(attemptsRemaining)")
+            Text("Lives Remaining: \(Live)")
             
             if gameover {
                 Text("Sedat dies")
             } else {
-                TextField("Enter a letter", text: $wordToGuess)
+                TextField("Enter a letter", text: $wordreals)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Button("Guess") {
-                    if wordToGuess.count == 1 {
-                        let letter = wordToGuess.uppercased().first! //UPPERCASED string işte of nil
-                        if wordToGuess.uppercased() == wordToGuess {
-                            if wordToGuess == "C" {
-                                guessedWord = "C__"
-                            } else if wordToGuess == "A" {
-                                guessedWord = "_A_"
-                            } else if wordToGuess == "T" {
-                                guessedWord = "__T"
+                    if wordreal.count == 1 {
+                        let letter = wordreal.uppercased().first! //UPPERCASED string işte of nil
+                        if wordreal.uppercased() == wordreal {
+                            if wordreal == "C" {
+                                space = "C__"
+                            } else if wordreal == "A" {
+                                space = "_A_"
+                            } else if wordreal == "T" {
+                                space = "__T"
                             } else {
-                                attemptsRemaining -= 1
+                                Live -= 1
                             }
                         } else {
-                            attemptsRemaining -= 1
+                            Live -= 1
                         }
                     }
-                    wordToGuess = ""
+                    wordreal = ""
                     
-                    if attemptsRemaining == 0 {
+                    if Live == 0 {
                         gameover = true
                     }
                 }
